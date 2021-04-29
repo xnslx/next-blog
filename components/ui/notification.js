@@ -21,8 +21,9 @@ function Notification(props) {
     <div className={cssClasses}>
       <h2>{title}</h2>
       <p>{message}</p>
-    </div>
-  ), document.getElementById('notifications');
+    </div>,
+    document.getElementById('notifications')
+  )
 }
 
 export default Notification;

@@ -14,6 +14,7 @@ function MainNavigation() {
                 <ul>
                     <li><Link href="/posts">Posts</Link></li>
                     <li><Link href="/contact">Contact</Link></li>
+                    <li><Link href="/signup">Singup</Link></li>
                 </ul>
             </nav>
         </header>
