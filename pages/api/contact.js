@@ -16,6 +16,8 @@ async function handler(req, res) {
             message
         };
 
+        console.log(newMessage)
+
         let client;
         try {
             client = await MongoClient.connect(dbUrl)
