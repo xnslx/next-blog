@@ -1,4 +1,22 @@
 import { useState, useRef } from 'react';
+import { signIn } from 'next-auth/client';
+
+async function createUser(email, password) {
+    const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        body: JSON.stringify({email, password}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const data = await response.json();
+    if(!response.ok){
+        throw new Error(data.message || 'Something went wrong')
+    }
+
+    return data;
+}
 
 function AuthForm() {
     const emailInputRef = useRef();
@@ -11,7 +29,13 @@ function AuthForm() {
         const enteredPassword = passwordInputRef.current.value;
 
         if(isLogin) {
+            const result = await signIn('credentials', {
+                redirect:false,
+                email: enteredEmail,
+                password: enteredPassword
+            });
 
+            console.log(result)
         } else {
             try {
                 const result = await createUser(enteredEmail, enteredPassword);
@@ -21,23 +45,6 @@ function AuthForm() {
             }
         }
     }
-
-  async function createUser(email, password) {
-      const response = await fetch('/api/auth/signup', {
-          method: 'POST',
-          body: JSON.stringify({email, password}),
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      });
-
-      const data = await response.json();
-      if(!response.ok){
-          throw new Error(data.message || 'Something went wrong')
-      }
-
-      return data;
-  }
 
   function switchAuthModeHandler() {
     setIsLogin((prevState) => !prevState);

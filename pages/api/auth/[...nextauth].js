@@ -1,4 +1,4 @@
-import NextAuth from 'nxet/auth';
+import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import { connectToDatabase } from '../../../lib/db';
 import { verifyPassword } from '../../../lib/auth';
