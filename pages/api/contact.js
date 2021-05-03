@@ -16,7 +16,7 @@ async function handler(req, res) {
             message
         };
 
-        console.log(newMessage)
+        // console.log(newMessage)
 
         let client;
         try {
