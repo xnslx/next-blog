@@ -9,26 +9,6 @@ import {getAllPosts} from '../../lib/posts-util';
 
 
 function AllPostsPage(props) {
-    // const [isLoading, setIsLoading] = useState(true);
-    // const router = useRouter()
-
-    // useEffect(() => {
-    //     getSession().then(session => {
-    //         console.log('allpostspage', session)
-    //         if(session) {
-    //             router.replace('/')
-    //         } else {
-    //             setIsLoading(false);
-    //         }
-    //     })
-    // }, [])
-    
-
-    // if(isLoading) {
-    //     return(
-    //         <p>Loading...</p>
-    //     )
-    // }
     return(
         <Fragment>
             <Head>
