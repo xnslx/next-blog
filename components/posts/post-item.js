@@ -1,3 +1,6 @@
+import { useSession, getSession } from 'next-auth/client';
+import { useState, useEffect} from 'react';
+
 import Link from 'next/link';
 import Image from 'next/image'
 import classes from './post-item.module.css'
@@ -15,6 +18,7 @@ function PostItem(props) {
 
     const linkPath = `/posts/${slug}`
     console.log('linkPath', linkPath)
+    
     return(
         <li className={classes.post}>
             <Link href={linkPath}>
