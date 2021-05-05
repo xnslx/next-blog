@@ -11,7 +11,7 @@ function MainNavigation() {
         signOut()
     }
     return(
-        <header className={classes.header}>
+        <header>
             <Link href='/'>
                 <a>
                     <Logo />

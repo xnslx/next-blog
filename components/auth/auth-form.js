@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import classes from './auth-form.module.css';
 
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
@@ -9,22 +8,22 @@ function AuthForm() {
   }
 
   return (
-    <section className={classes.auth}>
+    <section className="bg-red-500 w-360">
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
       <form>
-        <div className={classes.control}>
+        <div>
           <label htmlFor='email'>Your Email</label>
           <input type='email' id='email' required />
         </div>
-        <div className={classes.control}>
+        <div className="">
           <label htmlFor='password'>Your Password</label>
           <input type='password' id='password' required />
         </div>
-        <div className={classes.actions}>
+        <div className="">
           <button>{isLogin ? 'Login' : 'Create Account'}</button>
           <button
             type='button'
-            className={classes.toggle}
+            className=""
             onClick={switchAuthModeHandler}
           >
             {isLogin ? 'Create new account' : 'Login with existing account'}

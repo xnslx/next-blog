@@ -1,4 +1,6 @@
-import '../styles/globals.css';
+// import '../styles/globals.css';
+import '../styles/index.css';
+// import 'tailwindcss/tailwind.css'
 import Layout from '../components/layout/layout';
 import Head from 'next/head';
 import {Provider} from 'next-auth/client';

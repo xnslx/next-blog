@@ -56,16 +56,16 @@ function AuthForm() {
   }
 
   return (
-    <section>
+    <section className="bg-gray-200 w-1/3 absolute right-24 top-36 h-2/3 ">
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className="flex flex-col w-3/4 h-2/3 ml-auto mr-auto mt-20 ">
         <div>
-          <label htmlFor='email'>Your Email</label>
-          <input type='email' id='email' required ref={emailInputRef}/>
+          <label htmlFor='email' className="text-sm font-light">Email</label>
+          <input type='email' id='email' required ref={emailInputRef} className="block h-10 w-full mb-2  rounded"/>
         </div>
         <div>
-          <label htmlFor='password'>Your Password</label>
-          <input type='password' id='password' required ref={passwordInputRef}/>
+          <label htmlFor='password' className="text-sm font-light">Password</label>
+          <input type='password' id='password' required ref={passwordInputRef} className="block h-10 w-full rounded"/>
         </div>
         <div>
           <button>{isLogin ? 'Login' : 'Create Account'}</button>
