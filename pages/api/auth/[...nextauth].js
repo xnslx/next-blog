@@ -3,12 +3,18 @@ import Providers from 'next-auth/providers';
 import { connectToDatabase } from '../../../lib/db';
 import { verifyPassword } from '../../../lib/auth';
 
+require('dotenv').config();
+
 
 export default NextAuth({
     seesion: {
         jwt: true
     },
     providers: [
+        Providers.GitHub({
+            clientId: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        }),
         Providers.Credentials({
             async authorize(credentials) {
                 const client = await connectToDatabase();

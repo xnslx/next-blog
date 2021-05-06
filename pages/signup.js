@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react';
-import { signIn } from 'next-auth/client';
+import { getProviders, signIn } from 'next-auth/client';
 import { useRouter} from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FacebookLoginButton } from "react-social-login-buttons";
 
 async function createUser(email, password) {
     const response = await fetch('/api/auth/signup', {
@@ -21,7 +22,8 @@ async function createUser(email, password) {
     return data;
 }
 
-function AuthForm() {
+function AuthForm(props) {
+    console.log('props', props)
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
     const [isLogin, setIsLogin] = useState(true);
@@ -77,7 +79,7 @@ function AuthForm() {
             <button className="h-10 w-full bg-gray-800 mb-2 text-xs text-white rounded mr-1">LOGIN</button>
             {/* <button className="h-10 w-36 text-xs rounded border-black border-2">SINGUP</button> */}
             <Link href='/signup'>
-                <a className="text-sm font-normal">Don't have an account? <strong>Sign up</strong></a>
+                <a className="text-sm font-light">Don't have an account? <strong>Sign up</strong></a>
             </Link>
             {/* <button
                 type='button'
@@ -91,10 +93,36 @@ function AuthForm() {
                     <hr className="mt-8 w-2/5 border-black"></hr>
                 </div>            
             </div>
+            {/* <div className="flex flex-row justify-around content-center mt-4">
+                <button>
+                    <Image src="/images/icons/google.png" height={24} width={24}/>
+                </button>
+                <button onClick={() => signIn('github')}>
+                    <Image src="/images/icons/github.png" height={24} width={24}/>
+                </button>
+                <button>
+                    <Image src="/images/icons/facebook.png" height={24} width={24}/>
+                </button>
+            </div> */}
+            {Object.values(props.providers).map(provider => (
+                <div key={provider.name}>
+                    <button onClick={() => signIn(provider.id)}> Sign in with{provider.name}</button>
+                </div>
+            ))}
         </form>
         </section>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+    const providers = await getProviders();
+    console.log('providers', providers)
+    return {
+        props:{
+            providers
+        }
+    }
 }
 
 export default AuthForm;
