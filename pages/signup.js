@@ -1,9 +1,8 @@
-import { useState, useRef } from 'react';
-import { getProviders, signIn } from 'next-auth/client';
+import { useState, useRef, useEffect } from 'react';
+import { getProviders, useSession, getSession, signIn } from 'next-auth/client';
 import { useRouter} from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FacebookLoginButton } from "react-social-login-buttons";
 
 async function createUser(email, password) {
     const response = await fetch('/api/auth/signup', {
@@ -23,11 +22,12 @@ async function createUser(email, password) {
 }
 
 function AuthForm(props) {
-    console.log('props', props)
+    const [session, loading ] = useSession();
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
     const [isLogin, setIsLogin] = useState(true);
-    const router = useRouter()
+    const router = useRouter();
+
     async function submitHandler(e) {
         e.preventDefault();
         const enteredEmail = emailInputRef.current.value;
@@ -93,29 +93,24 @@ function AuthForm(props) {
                     <hr className="mt-8 w-2/5 border-black"></hr>
                 </div>            
             </div>
-            {/* <div className="flex flex-row justify-around content-center mt-4">
-                <button>
+            <div className="flex flex-row justify-around content-center mt-4">
+                <button onClick={() => signIn('google',{callbackUrl: 'http://localhost:3000/api/auth/callback/google'})}>
                     <Image src="/images/icons/google.png" height={24} width={24}/>
                 </button>
-                <button onClick={() => signIn('github')}>
+                <button onClick={() => signIn('github', {callbackUrl: 'http://localhost:3000/api/auth/callback/facebook'})}>
                     <Image src="/images/icons/github.png" height={24} width={24}/>
                 </button>
-                <button>
+                <button onClick={() => signIn('facebook', {callbackUrl: 'http://localhost:3000/api/auth/callback/facebook'})}>
                     <Image src="/images/icons/facebook.png" height={24} width={24}/>
                 </button>
-            </div> */}
-            {Object.values(props.providers).map(provider => (
-                <div key={provider.name}>
-                    <button onClick={() => signIn(provider.id)}> Sign in with{provider.name}</button>
-                </div>
-            ))}
+            </div>
         </form>
         </section>
     </div>
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context) {    
     const providers = await getProviders();
     console.log('providers', providers)
     return {

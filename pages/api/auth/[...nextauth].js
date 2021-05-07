@@ -6,7 +6,7 @@ import { verifyPassword } from '../../../lib/auth';
 require('dotenv').config();
 
 
-export default NextAuth({
+const options = {
     seesion: {
         jwt: true
     },
@@ -14,6 +14,14 @@ export default NextAuth({
         Providers.GitHub({
             clientId: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        }),
+        Providers.Facebook({
+            clientId: process.env.FACEBOOK_CLIENT_ID,
+            clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        }),
+        Providers.Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         }),
         Providers.Credentials({
             async authorize(credentials) {
@@ -38,4 +46,6 @@ export default NextAuth({
             }
         })
     ]
-})
+};
+
+export default NextAuth(options)

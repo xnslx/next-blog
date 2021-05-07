@@ -9,12 +9,15 @@ import {getAllPosts} from '../../lib/posts-util';
 
 
 function AllPostsPage(props) {
+    const [ session, loading ] = useSession();
+    console.log('allpostspage', session)
     return(
         <Fragment>
             <Head>
                 <title>All Posts</title>
                 <meta name='description' content='A list of all programming-related tutorials and posts.'/>
             </Head>
+            {/* You will see AllPosts components once the user successfully log in. */}
             <AllPosts posts={props.posts}/>
         </Fragment>
         

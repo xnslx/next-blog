@@ -5,7 +5,6 @@ import Logo from './logo';
 
 function MainNavigation() {
     const [session, loading] = useSession();
-    console.log('mainnav', session)
 
     function logoutHandler() {
         signOut()
