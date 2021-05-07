@@ -11,6 +11,9 @@ import {getAllPosts} from '../../lib/posts-util';
 function AllPostsPage(props) {
     const [ session, loading ] = useSession();
     console.log('allpostspage', session)
+    if(!session) {
+       return <p>You need to log in to see all posts</p> 
+    }
     return(
         <Fragment>
             <Head>
