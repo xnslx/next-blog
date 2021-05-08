@@ -24,13 +24,13 @@ function PostItem(props) {
             <li className="">
                 <Link href={linkPath}>
                     <a>
-                        <div>
+                        <div className="">
                             <Image src={imagePath} alt={title} width={300} height={200} layout='responsive'/>
                         </div>
                         <div>
                             <h3 className="text-base font-bold ml-2 mt-2">{title}</h3>
                             <time className="text-sm font-light ml-2">{formattedDate}</time>
-                            <p className="font-normal mt-6 ml-2 pb-2">{excerpt}</p>
+                            <p className="font-normal text-sm mt-6 ml-2 pb-2">{excerpt}</p>
                         </div>
                     </a>
                 </Link>

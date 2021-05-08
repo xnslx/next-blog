@@ -48,9 +48,9 @@ function PostContent(props) {
 
     }
     return(
-        <article className={classes.content}>
+        <article className="w-9/12 ml-auto mr-auto">
             <PostHeader title={post.title} image={imagePath}/>
-            <ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
+            <ReactMarkdown components={customRenderers} className="w-9/12 ml-auto mr-auto mt-12">{post.content}</ReactMarkdown>
         </article>
     )
 };

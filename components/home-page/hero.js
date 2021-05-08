@@ -3,12 +3,14 @@ import classes from './hero.module.css'
 
 function Hero() {
     return (
-        <section className={classes.hero}>
-            <div className={classes.image}>
-                <Image src="/images/site/xian.jpeg" alt="An image showing Xian" width={300} height={300} />
+        <section className="grid grid-cols-2 border-l-2 border-black border-r-2 border-b-2">
+            <div className="flex flex-col border-r-2 border-black justify-center items-center ">
+                <p className="text-4xl">Hi, I'm Xian.</p>
+                <p className="text-4xl">I blog web development.</p>
             </div>
-            <h1>Hi, I'm Xian.</h1>
-            <p>I blog web development.</p>
+            <div className="border-black">
+                <Image src="/images/site/xian.jpeg" alt="An image showing Xian" width={600} height={600}/>
+            </div>
         </section>
     )
 };

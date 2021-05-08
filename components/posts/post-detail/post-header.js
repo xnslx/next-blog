@@ -5,9 +5,11 @@ function PostHeader(props) {
 
     const { title, image } = props;
     return(
-        <header className={classes.header}>
-            <h1>{title}</h1>
-            <Image src={image} alt={title} width={200} height={150}/>
+        <header className="mt-12">
+            <h1 className="font-bold text-center">{title}</h1>
+            <div className="flex justify-center">
+                <Image src={image} alt={title} width={600} height={400} />
+            </div>
         </header>
     )
 };
