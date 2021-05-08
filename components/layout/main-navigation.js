@@ -10,23 +10,23 @@ function MainNavigation() {
         signOut()
     }
     return(
-        <header>
+        <header className="grid grid-cols-2 h-20 border-black border-2 ">
             <Link href='/'>
-                <a>
+                <a className="mt-auto mb-auto ml-auto mr-auto">
                     <Logo />
                 </a>
             </Link>
-            <nav>
-                <ul>
-                    {session && <li>
+            <nav className="border-black border-t-0 border-b-0 border-l-2 border-r-2">
+                <ul className="flex flex-row justify-around h-full">
+                    {session && <li className="mt-auto mb-auto">
                         <Link href="/posts">Posts</Link>
                     </li>}
-                    <li><Link href="/contact">Contact</Link></li>
+                    <li className="mt-auto mb-auto"><Link href="/contact">Contact</Link></li>
                     {!session && (
-                        <li><Link href="/signup">Login</Link></li>
+                        <li className="mt-auto mb-auto"><Link href="/signup">Login</Link></li>
                     )}
                     {session && (
-                        <li><button onClick={logoutHandler}>Logout</button></li>
+                        <li className="mt-auto mb-auto"><button onClick={logoutHandler}>Logout</button></li>
                     )}                    
                 </ul>
             </nav>

@@ -6,7 +6,8 @@ import classes from './all-posts.module.css';
 function AllPosts(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [session, loading] = useSession();
-    console.log('allposts', session)
+    console.log('allposts', session);
+
     useEffect(() => {
         getSession().then(session => {
             console.log('session', session)
@@ -26,15 +27,14 @@ function AllPosts(props) {
     }
 
     return(
-        <section className={classes.posts}>
-            <h1>All Posts</h1>
+        <section className="w-10/12 ml-auto mr-auto">
             {/* The user will see PostsGrid component once the user successfully log in. */}
-            <PostsGrid posts={props.posts}/>
+            <PostsGrid posts={props.posts} />
         </section>
     )
 };
 
-async function getServerSideProps(context) {
+export async function getServerSideProps(context) {
     console.log('context', context)
     return {
       props: {
