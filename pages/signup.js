@@ -60,13 +60,13 @@ function AuthForm(props) {
   }
 
   return (
-    <div className="flex flex-row mt-20 justify-around">
+    <div className="flex flex-col mt-20 justify-around md:flex-row">
         <div className="-mt-10">
             <Image src="/images/images/signin.png" width={500} height={500} />
         </div>
-        <section className="w-1/3">
+        <section className="ml-auto mr-auto w-4/5 md:w-1/3">
         {/* <h1>{isLogin ? 'Login' : 'Sign Up'}</h1> */}
-        <form onSubmit={submitHandler} className="flex flex-col w-3/4 h-2/3 mt-18 ">
+        <form onSubmit={submitHandler} className="flex flex-col md:w-3/4 h-2/3 mt-18 ">
             <div>
             <label htmlFor='email' className="text-sm font-normal">Email</label>
             <input type='email' id='email' required ref={emailInputRef} className="block h-10 w-full mb-2  rounded border-black border-2"/>
