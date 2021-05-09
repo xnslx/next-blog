@@ -3,12 +3,29 @@ import Image from 'next/image';
 
 import PostHeader from './post-header';
 import classes from './post-content.module.css';
+import { useSession, getSession } from 'next-auth/client';
+import { useState, useEffect} from 'react';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 
 function PostContent(props) {
+    const [isLoading, setIsLoading] = useState(true);
+      const [session, loading] = useSession();
+      console.log('allposts', session);
+
+      useEffect(() => {
+          getSession().then(session => {
+              console.log('session', session)
+              if(!session) {
+                  window.location.href = '/signup'
+              } else {
+                  setIsLoading(false);
+              }
+          })
+      }, [])
+      
     const { post } = props;
     const imagePath = `/images/posts/${post.slug}/${post.image}`
 
@@ -48,9 +65,9 @@ function PostContent(props) {
 
     }
     return(
-        <article className="w-9/12 ml-auto mr-auto">
+        <article className=" w-10/12 md:w-9/12 ml-auto mr-auto">
             <PostHeader title={post.title} image={imagePath}/>
-            <ReactMarkdown components={customRenderers} className="w-9/12 ml-auto mr-auto mt-12 font-semibold text-basem">{post.content}</ReactMarkdown>
+            <ReactMarkdown components={customRenderers} className="md:w-9/12 ml-auto mr-auto mt-12 font-semibold text-base">{post.content}</ReactMarkdown>
         </article>
     )
 };
