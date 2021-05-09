@@ -9,7 +9,7 @@ function PostsGrid(props) {
     console.log('posts', posts);
 
     return(
-        <ul className="grid grid-cols-3 gap-10 mt-12">
+        <ul className="w-11/12 ml-auto mr-auto grid grid-cols-3 gap-10 mt-12">
             {posts.map(post => <PostItem key={post.slug} post={post} />)}
         </ul>
     )

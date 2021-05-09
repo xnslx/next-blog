@@ -18,15 +18,15 @@ function MainNavigation() {
             </Link>
             <nav className="border-black border-t-0 border-b-0 border-l-2 ">
                 <ul className="flex flex-row justify-around h-full">
-                    {session && <li className="mt-auto mb-auto">
+                    {session && <li className="mt-auto mb-auto font-semibold">
                         <Link href="/posts">Posts</Link>
                     </li>}
-                    <li className="mt-auto mb-auto"><Link href="/contact">Contact</Link></li>
+                    <li className="mt-auto mb-auto font-semibold"><Link href="/contact">Contact</Link></li>
                     {!session && (
-                        <li className="mt-auto mb-auto"><Link href="/signup">Login</Link></li>
+                        <li className="mt-auto mb-auto font-semibold"><Link href="/signup">Login</Link></li>
                     )}
                     {session && (
-                        <li className="mt-auto mb-auto"><button onClick={logoutHandler}>Logout</button></li>
+                        <li className="mt-auto mb-auto font-semibold"><button onClick={logoutHandler}>Logout</button></li>
                     )}                    
                 </ul>
             </nav>
