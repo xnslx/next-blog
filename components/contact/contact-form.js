@@ -81,41 +81,45 @@ function ContactForm() {
         }
     }
     return (
-        <section>
-            <h1>How can I help you?</h1>
-            <form onSubmit={sendMessageHandler}>
+        <section className="ml-auto mr-auto w-4/5 mt-20 md:w-7/12">
+            <h1 className="text-center font-bold text-2xl">How can I help you?</h1>
+            <form onSubmit={sendMessageHandler} className="flex-col md:w-full h-2/3 mt-18 ">
                 <div>
-                    <label htmlFor="email">Your Email</label>
+                    <label htmlFor="email" className="text-sm font-normal">Your Email</label>
                     <input 
                     type="email" 
                     id="email" 
                     required 
                     value={enteredEmail}
                     onChange={e => setEnteredEmail(e.target.value)}
+                    className="block h-10 w-full mb-2  rounded border-black border-2"
                     />
                 </div>
                 <div>
-                    <label htmlFor="name">Your Name</label>
+                    <label htmlFor="name" className="text-sm font-normal">Your Name</label>
                     <input 
                     type="text" 
                     id="name" 
                     required
                     value={enteredName}
                     onChange={e => setEnteredName(e.target.value)}
+                    className="block h-10 w-full mb-2 rounded border-black border-2"
                     />
                 </div>
                 <div>
-                    <label htmlFor="message">Your Message</label>
+                    <label htmlFor="message" className="text-sm font-normal">Your Message</label>
                     <textarea 
                         id="message"  
                         rows="5"
                         required
                         value={enteredMessage}
-                        onChange={e => setEnteredMessage(e.target.value)}>
+                        onChange={e => setEnteredMessage(e.target.value)}
+                        className="w-full rounded border-black border-2 mb-8"
+                        >
                     </textarea>
                 </div>
                 <div>
-                    <button>Send Message</button>
+                    <button className="h-10 w-full bg-gray-800 mb-2 text-xs text-white rounded mr-1">Send Message</button>
                 </div>
             </form>
             {notification && <Notification 
