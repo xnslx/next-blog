@@ -59,23 +59,23 @@ function AuthForm(props) {
     setIsLogin((prevState) => !prevState);
   }
 
-  console.log('process.env.NODE_ENV',process.env.NODE_ENV)
-  let callbackUrl;
-  if(process.env.NODE_ENV == 'development') {
-    callbackUrl = 'http://localhost:3000/posts'
-  } else if(process.env.NODE_ENV == 'production') {
-    callbackUrl = 'https://next-blog-gyis1b21v-xnslx.vercel.app/posts'
-  }
+//   console.log('process.env.NODE_ENV',process.env.NODE_ENV)
+//   let callbackUrl;
+//   if(process.env.NODE_ENV == 'development') {
+//     callbackUrl = 'http://localhost:3000/posts'
+//   } else if(process.env.NODE_ENV == 'production') {
+//     callbackUrl = 'https://next-blog-gyis1b21v-xnslx.vercel.app/posts'
+//   }
   
-
+//   console.log('callbackUrl', callbackUrl)
   return (
     <div className="flex flex-col mt-20 justify-around md:flex-row">
-        <div className="-mt-10">
+        <div className=" -mt-12 md:-mt-10 md:ml-16">
             <Image src="/images/images/signin.png" width={500} height={500} />
         </div>
-        <section className="ml-auto mr-auto w-4/5 md:w-1/3">
+        <section className="ml-auto mr-auto w-4/5 mb-8 md:w-1/3">
         {/* <h1>{isLogin ? 'Login' : 'Sign Up'}</h1> */}
-        <form onSubmit={submitHandler} className="flex flex-col md:w-3/4 h-2/3 mt-18 ">
+        <form onSubmit={submitHandler} className="flex flex-col md:w-4/5 h-2/3 mt-18 ">
             <div>
             <label htmlFor='email' className="text-sm font-normal">Email</label>
             <input type='email' id='email' required ref={emailInputRef} className="block h-10 w-full mb-2  rounded border-black border-2"/>
@@ -103,13 +103,13 @@ function AuthForm(props) {
                 </div>            
             </div>
             <div className="flex flex-row justify-around content-center mt-4">
-                <button onClick={() => signIn('google', {callbackUrl: callbackUrl})}>
+                <button onClick={() => signIn('google')}>
                     <Image src="/images/icons/google.png" height={24} width={24}/>
                 </button>
-                <button onClick={() => signIn('github',{callbackUrl: callbackUrl})}>
+                <button onClick={() => signIn('github')}>
                     <Image src="/images/icons/github.png" height={24} width={24}/>
                 </button>
-                <button onClick={() => signIn('facebook', {callbackUrl: callbackUrl})}>
+                <button onClick={() => signIn('facebook')}>
                     <Image src="/images/icons/facebook.png" height={24} width={24}/>
                 </button>
             </div>
