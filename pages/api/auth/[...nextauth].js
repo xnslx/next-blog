@@ -14,20 +14,14 @@ const options = {
         Providers.GitHub({
             clientId: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
-            scope: "user",
-            authorizationUrl: "https://github.com/login/oauth/authorize",
         }),
         Providers.Facebook({
             clientId: process.env.FACEBOOK_CLIENT_ID,
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-            scope: "email",
-            authorizationUrl: "https://www.facebook.com/v7.0/dialog/oauth?response_type=code",
         }),
         Providers.Google({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            scope: "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
-            authorizationUrl: "https://accounts.google.com/o/oauth2/auth?response_type=code"
         }),
         Providers.Credentials({
             async authorize(credentials) {
