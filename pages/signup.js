@@ -64,10 +64,11 @@ function AuthForm(props) {
   if(process.env.NODE_ENV == 'development') {
     callbackUrl = 'http://localhost:3000/posts'
   } else if(process.env.NODE_ENV == 'production') {
-    callbackUrl = 'https://next-blog-ku9ff2ywe-xnslx.vercel.app/posts'
+    callbackUrl = `${window.location.origin}/posts`
   }
   
   console.log('callbackUrl', callbackUrl)
+  console.log('window.location.origin',window.location.origin)
   return (
     <div className="flex flex-col mt-20 justify-around md:flex-row">
         <div className=" -mt-12 md:-mt-10 md:ml-16">
