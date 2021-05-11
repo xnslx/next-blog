@@ -59,6 +59,15 @@ function AuthForm(props) {
     setIsLogin((prevState) => !prevState);
   }
 
+  console.log('process.env.NODE_ENV',process.env.NODE_ENV)
+  let callbackUrl;
+  if(process.env.NODE_ENV == 'development') {
+    callbackUrl = 'http://localhost:3000/posts'
+  } else if(process.env.NODE_ENV == 'production') {
+    callbackUrl = 'https://next-blog-xnslx.vercel.app/posts'
+  }
+  
+
   return (
     <div className="flex flex-col mt-20 justify-around md:flex-row">
         <div className="-mt-10">
@@ -94,13 +103,13 @@ function AuthForm(props) {
                 </div>            
             </div>
             <div className="flex flex-row justify-around content-center mt-4">
-                <button onClick={() => signIn('google', {callbackUrl: 'https://next-blog-xnslx.vercel.app//posts'})}>
+                <button onClick={() => signIn('google', {callbackUrl: callbackUrl})}>
                     <Image src="/images/icons/google.png" height={24} width={24}/>
                 </button>
-                <button onClick={() => signIn('github',{callbackUrl: 'https://next-blog-xnslx.vercel.app//posts'})}>
+                <button onClick={() => signIn('github',{callbackUrl: callbackUrl})}>
                     <Image src="/images/icons/github.png" height={24} width={24}/>
                 </button>
-                <button onClick={() => signIn('facebook', {callbackUrl: 'https://next-blog-xnslx.vercel.app//posts'})}>
+                <button onClick={() => signIn('facebook', {callbackUrl: callbackUrl})}>
                     <Image src="/images/icons/facebook.png" height={24} width={24}/>
                 </button>
             </div>
