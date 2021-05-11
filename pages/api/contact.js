@@ -2,6 +2,7 @@ import { MongoClient } from 'mongodb';
 require('dotenv').config();
 
 const dbUrl = process.env.URL;
+// const connectionString = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.zpjgq.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`
 
 async function handler(req, res) {
     if (req.method === 'POST') {

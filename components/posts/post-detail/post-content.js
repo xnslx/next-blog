@@ -6,18 +6,21 @@ import classes from './post-content.module.css';
 import { useSession, getSession } from 'next-auth/client';
 import { useState, useEffect} from 'react';
 
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark} from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import atomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+
+SyntaxHighlighter.registerLanguage('js', js);
+SyntaxHighlighter.registerLanguage('css', css);
 
 
 function PostContent(props) {
-    const [isLoading, setIsLoading] = useState(true);
+      const [isLoading, setIsLoading] = useState(true);
       const [session, loading] = useSession();
-      console.log('allposts', session);
 
       useEffect(() => {
           getSession().then(session => {
-              console.log('session', session)
               if(!session) {
                   window.location.href = '/signup'
               } else {
@@ -25,7 +28,7 @@ function PostContent(props) {
               }
           })
       }, [])
-      
+
     const { post } = props;
     const imagePath = `/images/posts/${post.slug}/${post.image}`
 

@@ -17,7 +17,6 @@ function PostItem(props) {
     const imagePath = `/images/posts/${slug}/${image}`
 
     const linkPath = `/posts/${slug}`
-    console.log('linkPath', linkPath)
 
     return(
         <div className="bg-white">

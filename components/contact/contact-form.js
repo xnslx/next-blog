@@ -83,7 +83,7 @@ function ContactForm() {
     return (
         <section className="ml-auto mr-auto w-4/5 mt-20 md:w-7/12">
             <h1 className="text-center font-bold text-2xl">How can I help you?</h1>
-            <form onSubmit={sendMessageHandler} className="flex-col md:w-full h-2/3 mt-18 ">
+            <form onSubmit={sendMessageHandler} className="flex-col md:w-full h-2/3 mt-8 ">
                 <div>
                     <label htmlFor="email" className="text-sm font-normal">Your Email</label>
                     <input 

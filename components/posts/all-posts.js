@@ -6,7 +6,6 @@ import classes from './all-posts.module.css';
 function AllPosts(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [session, loading] = useSession();
-    console.log('allposts', session);
 
     useEffect(() => {
         getSession().then(session => {
@@ -35,7 +34,6 @@ function AllPosts(props) {
 };
 
 export async function getServerSideProps(context) {
-    console.log('context', context)
     return {
       props: {
         session: await getSession(context)
