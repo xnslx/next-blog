@@ -94,13 +94,13 @@ function AuthForm(props) {
                 </div>            
             </div>
             <div className="flex flex-row justify-around content-center mt-4">
-                <button onClick={() => signIn('google', {callbackUrl: 'http://localhost:3000/posts'})}>
+                <button onClick={() => signIn('google', {callbackUrl: 'https://next-blog-xnslx.vercel.app//posts'})}>
                     <Image src="/images/icons/google.png" height={24} width={24}/>
                 </button>
-                <button onClick={() => signIn('github',{callbackUrl: 'http://localhost:3000/posts'})}>
+                <button onClick={() => signIn('github',{callbackUrl: 'https://next-blog-xnslx.vercel.app//posts'})}>
                     <Image src="/images/icons/github.png" height={24} width={24}/>
                 </button>
-                <button onClick={() => signIn('facebook', {callbackUrl: 'http://localhost:3000/posts'})}>
+                <button onClick={() => signIn('facebook', {callbackUrl: 'https://next-blog-xnslx.vercel.app//posts'})}>
                     <Image src="/images/icons/facebook.png" height={24} width={24}/>
                 </button>
             </div>
