@@ -64,7 +64,7 @@ function AuthForm(props) {
   if(process.env.NODE_ENV == 'development') {
     callbackUrl = 'http://localhost:3000/posts'
   } else if(process.env.NODE_ENV == 'production') {
-    callbackUrl = 'https://next-blog-delta-five.vercel.app/posts'
+    callbackUrl = 'https://next-blog-gyis1b21v-xnslx.vercel.app/posts'
   }
   
 
