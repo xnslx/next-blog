@@ -45,7 +45,10 @@ const options = {
                 client.close()
             }
         })
-    ]
+    ],
+    pages: {
+        signIn: '/signin',
+    }
 };
 
 export default NextAuth(options)
