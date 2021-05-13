@@ -27,6 +27,7 @@ function AuthForm(props) {
     const passwordInputRef = useRef();
     const [isLogin, setIsLogin] = useState(true);
     const router = useRouter();
+    console.log('router.query', router.query)
 
     async function submitHandler(e) {
         e.preventDefault();

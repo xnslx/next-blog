@@ -22,7 +22,6 @@ const options = {
         Providers.Google({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            authorizationUrl: "https://accounts.google.com/login/signinchooser?flowName=GlifWebSignIn&flowEntry=ServiceLogin"
         }),
         Providers.Credentials({
             async authorize(credentials) {
@@ -46,10 +45,7 @@ const options = {
                 client.close()
             }
         })
-    ],
-    pages: {
-        signIn: '/signin',
-    }
+    ]
 };
 
 export default NextAuth(options)
