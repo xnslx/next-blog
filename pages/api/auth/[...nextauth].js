@@ -48,6 +48,15 @@ const options = {
     ],
     pages: {
         signIn: '/signin',
+    },
+    callbacks: {
+        redirect: async(url, baseUrl) => {
+            console.log('url', url)
+            console.log('baseUrl', baseUrl)
+            return url.startsWith(baseUrl) ?
+                Promise.resolve(url) :
+                Promise.resolve(baseUrl)
+        }
     }
 };
 

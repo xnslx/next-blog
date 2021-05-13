@@ -10,7 +10,7 @@ function SigninForm(props) {
     const [isLogin, setIsLogin] = useState(true);
 
     const router = useRouter();
-    console.log('router.query', router.query)
+    console.log('router.query', router.query.callbackUrl)
 
     async function submitHandler(e) {
         e.preventDefault();
