@@ -59,15 +59,15 @@ function AuthForm(props) {
     setIsLogin((prevState) => !prevState);
   }
 
-  console.log('process.env.NODE_ENV',process.env.NODE_ENV)
-  let callbackUrl;
-  if(process.env.NODE_ENV == 'development') {
-    callbackUrl = 'http://localhost:3000/posts'
-  } else if(process.env.NODE_ENV == 'production') {
-    callbackUrl = 'https://next-blog-delta-five.vercel.app/posts'
-  }
+//   console.log('process.env.NODE_ENV',process.env.NODE_ENV)
+//   let callbackUrl;
+//   if(process.env.NODE_ENV == 'development') {
+//     callbackUrl = 'http://localhost:3000/posts'
+//   } else if(process.env.NODE_ENV == 'production') {
+//     callbackUrl = 'https://next-blog-delta-five.vercel.app/posts'
+//   }
   
-  console.log('callbackUrl', callbackUrl)
+//   console.log('callbackUrl', callbackUrl)
   
   return (
     <div className="flex flex-col mt-20 justify-around md:flex-row">
@@ -103,7 +103,7 @@ function AuthForm(props) {
                     <hr className="mt-8 w-2/5 border-black"></hr>
                 </div>            
             </div>
-            <div className="flex flex-row justify-around content-center mt-4">
+            {/* <div className="flex flex-row justify-around content-center mt-4">
                 <button onClick={() => signIn('google', {callbackUrl: callbackUrl})}>
                     <Image src="/images/icons/google.png" height={24} width={24}/>
                 </button>
@@ -113,6 +113,18 @@ function AuthForm(props) {
                 <button onClick={() => signIn('facebook', {callbackUrl: callbackUrl})}>
                     <Image src="/images/icons/facebook.png" height={24} width={24}/>
                 </button>
+            </div> */}
+            <div className="flex flex-row justify-around content-center mt-4">
+                {Object.values(props.providers).map((provider) => {
+                    if(provider.name === 'Credentials') {
+                        return;
+                    }
+                    return (
+                        <div key={provider.name}>
+                            <button className="rounded p-2 border-black border-2" onClick={() => signIn(provider.id)}>{provider.name}</button>
+                        </div>
+                    )
+                })}
             </div>
         </form>
         </section>
