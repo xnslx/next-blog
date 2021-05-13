@@ -23,7 +23,7 @@ function MainNavigation() {
                     </li>}
                     <li className="mt-auto mb-auto font-semibold"><Link href="/contact">Contact</Link></li>
                     {!session && (
-                        <li className="mt-auto mb-auto font-semibold"><Link href="/signup">Login</Link></li>
+                        <li className="mt-auto mb-auto font-semibold"><Link href="/signin">Login</Link></li>
                     )}
                     {session && (
                         <li className="mt-auto mb-auto font-semibold"><button onClick={logoutHandler}>Logout</button></li>

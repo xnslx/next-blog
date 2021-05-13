@@ -16,7 +16,6 @@ function SigninForm(props) {
         e.preventDefault();
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
-
         if(isLogin) {
             const result = await signIn('credentials', {
                 redirect:false,
@@ -95,6 +94,7 @@ export async function getServerSideProps(context) {
     }
 
 }
+
 
 
 
