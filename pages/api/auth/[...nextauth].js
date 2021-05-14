@@ -45,19 +45,7 @@ const options = {
                 client.close()
             }
         })
-    ],
-    pages: {
-        signIn: '/signin',
-    },
-    callbacks: {
-        async redirect(url, baseUrl) {
-            console.log('url', url)
-            console.log('baseUrl', baseUrl)
-            return url.startsWith(baseUrl) ?
-                url :
-                baseUrl
-        }
-    }
+    ]
 };
 
 export default NextAuth(options)

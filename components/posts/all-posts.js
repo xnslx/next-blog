@@ -11,7 +11,7 @@ function AllPosts(props) {
         getSession().then(session => {
             console.log('session', session)
             if(!session) {
-                window.location.href = '/signup'
+                window.location.href = '/signin'
             } else {
                 setIsLoading(false);
             }
