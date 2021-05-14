@@ -4,6 +4,24 @@ import { getProviders, useSession, getSession, signIn } from 'next-auth/client';
 import Link from 'next/link';
 import { useRouter} from 'next/router';
 
+async function createUser(email, password) {
+    const response = await fetch('/api/auth/signup', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  
+    const data = await response.json();
+  
+    if (!response.ok) {
+      throw new Error(data.message || 'Something went wrong!');
+    }
+  
+    return data;
+  }
+
 function SigninForm(props) {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -22,6 +40,8 @@ function SigninForm(props) {
                 email: enteredEmail,
                 password: enteredPassword
             });
+
+            console.log('result', result)
 
             if(!result.error) {
                 router.replace('/posts')
@@ -84,9 +104,9 @@ function SigninForm(props) {
 };
 
 export async function getServerSideProps(context) {
-    console.log('context', context);
+    // console.log('context', context);
     const providers = await getProviders();
-    console.log('providers', providers)
+    // console.log('providers', providers)
     return {
         props:{
             providers

@@ -5,8 +5,14 @@ async function handler(req, res) {
     if (req.method !== 'POST') {
         return;
     }
+
+    console.log('req.body', req.body)
     const data = req.body;
-    const { email, password } = data;
+    const email = req.body.enteredEmail;
+    const password = req.body.enteredPassword;
+
+    console.log(email)
+    console.log(password)
 
     if (!email || !email.includes('@') || !password || password.trim().length < 7) {
         res.status(422).json({ message: 'Invalid input' });
