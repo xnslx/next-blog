@@ -8,7 +8,7 @@ function Hero() {
                 <p className="text-4xl text-center">I blog web development.</p>
             </div>
             <div className="">
-                <Image src="/images/site/xian.jpeg" alt="An image showing Xian" width={600} height={600}/>
+                <Image src="/images/site/profile.jpg" alt="An image showing Xian" width={600} height={600}/>
             </div>
         </section>
     )

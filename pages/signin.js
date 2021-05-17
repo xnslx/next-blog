@@ -4,23 +4,23 @@ import { getProviders, useSession, getSession, signIn } from 'next-auth/client';
 import Link from 'next/link';
 import { useRouter} from 'next/router';
 
-async function createUser(email, password) {
-    const response = await fetch('/api/auth/signup', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+// async function createUser(email, password) {
+//     const response = await fetch('/api/auth/signup', {
+//       method: 'POST',
+//       body: JSON.stringify({ email, password }),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
   
-    const data = await response.json();
+//     const data = await response.json();
   
-    if (!response.ok) {
-      throw new Error(data.message || 'Something went wrong!');
-    }
+//     if (!response.ok) {
+//       throw new Error(data.message || 'Something went wrong!');
+//     }
   
-    return data;
-  }
+//     return data;
+//   }
 
 function SigninForm(props) {
     const emailInputRef = useRef();
@@ -34,20 +34,19 @@ function SigninForm(props) {
         e.preventDefault();
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
+        console.log(enteredEmail)
         if(isLogin) {
             const result = await signIn('credentials', {
                 redirect:false,
                 email: enteredEmail,
                 password: enteredPassword
             });
-
-            console.log('result', result)
+            
 
             if(!result.error) {
                 router.replace('/posts')
             }
-
-            console.log(result)
+            console.log('result', result)
         } else {
             try {
                 const result = await createUser(enteredEmail, enteredPassword);
@@ -59,6 +58,7 @@ function SigninForm(props) {
     }
 
 
+
     return(
         <div className="flex flex-col mt-20 justify-around md:flex-row">
         <div className=" -mt-12 md:-mt-10 md:ml-16">
@@ -67,12 +67,12 @@ function SigninForm(props) {
         <section className="ml-auto mr-auto w-4/5 mb-8 md:w-1/3">
         <form onSubmit={submitHandler} className="flex flex-col md:w-4/5 h-2/3 mt-18 ">
             <div>
-            <label htmlFor='email' className="text-sm font-normal">Email</label>
-            <input type='email' id='email' required ref={emailInputRef} className="block h-10 w-full mb-2  rounded border-black border-2"/>
+                <label htmlFor='email' className="text-sm font-normal">Email</label>
+                <input type='email' id='email' required ref={emailInputRef} className="block h-10 w-full mb-2  rounded border-black border-2"/>
             </div>
             <div>
-            <label htmlFor='password' className="text-sm font-normal">Password</label>
-            <input type='password' id='password' required ref={passwordInputRef} className="block h-10 w-full mb-8 rounded border-black border-2"/>
+                <label htmlFor='password' className="text-sm font-normal">Password</label>
+                <input type='password' id='password' required ref={passwordInputRef} className="block h-10 w-full mb-8 rounded border-black border-2"/>
             </div>
             <div>
             <button className="h-10 w-full bg-gray-800 mb-2 text-xs text-white rounded mr-1">LOGIN</button>

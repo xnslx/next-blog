@@ -10,11 +10,9 @@ async function handler(req, res) {
     const data = req.body;
     const email = req.body.enteredEmail;
     const password = req.body.enteredPassword;
+    const confirmPassword = req.body.enteredConfirmPassword;
 
-    console.log(email)
-    console.log(password)
-
-    if (!email || !email.includes('@') || !password || password.trim().length < 7) {
+    if (!email || !email.includes('@') || !password || password.trim().length < 7 || password !== confirmPassword) {
         res.status(422).json({ message: 'Invalid input' });
         return;
     }

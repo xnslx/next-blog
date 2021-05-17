@@ -5,7 +5,6 @@ import { verifyPassword } from '../../../lib/auth';
 
 require('dotenv').config();
 
-
 const options = {
     seesion: {
         jwt: true
@@ -25,6 +24,7 @@ const options = {
         }),
         Providers.Credentials({
             async authorize(credentials) {
+                console.log('credentials', credentials)
                 const client = await connectToDatabase();
                 const usersCollection = client.db().collection('users');
                 const user = await usersCollection.findOne({ email: credentials.email })
@@ -40,9 +40,9 @@ const options = {
                     throw new Error('Could not log you in.')
                 }
 
-                return { email: user.email }
+                client.close();
 
-                client.close()
+                return { email: user.email };
             }
         })
     ]
