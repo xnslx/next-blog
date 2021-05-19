@@ -4,23 +4,6 @@ import { getProviders, useSession, getSession, signIn } from 'next-auth/client';
 import Link from 'next/link';
 import { useRouter} from 'next/router';
 
-// async function createUser(email, password) {
-//     const response = await fetch('/api/auth/signup', {
-//       method: 'POST',
-//       body: JSON.stringify({ email, password }),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-  
-//     const data = await response.json();
-  
-//     if (!response.ok) {
-//       throw new Error(data.message || 'Something went wrong!');
-//     }
-  
-//     return data;
-//   }
 
 function SigninForm(props) {
     const emailInputRef = useRef();
@@ -28,13 +11,12 @@ function SigninForm(props) {
     const [isLogin, setIsLogin] = useState(true);
 
     const router = useRouter();
-    console.log('router.query', router.query.callbackUrl)
 
     async function submitHandler(e) {
         e.preventDefault();
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
-        console.log(enteredEmail)
+
         if(isLogin) {
             const result = await signIn('credentials', {
                 redirect:false,

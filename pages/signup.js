@@ -11,16 +11,12 @@ function AuthForm(props) {
     const confirmPasswordInputRef = useRef()
     const [isLogin, setIsLogin] = useState(true);
     const router = useRouter();
-    console.log('router.query', router.query)
 
     async function submitHandler(e) {
         e.preventDefault();
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
         const enteredConfirmPassword = confirmPasswordInputRef.current.value;
-
-        console.log(enteredEmail)
-        console.log(enteredPassword)
         
         const response = await fetch('/api/auth/signup', {
             method: 'POST',

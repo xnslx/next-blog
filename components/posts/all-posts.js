@@ -9,7 +9,6 @@ function AllPosts(props) {
 
     useEffect(() => {
         getSession().then(session => {
-            console.log('session', session)
             if(!session) {
                 window.location.href = '/signin'
             } else {
