@@ -10,6 +10,7 @@ function AuthForm(props) {
     const passwordInputRef = useRef();
     const confirmPasswordInputRef = useRef()
     const [isLogin, setIsLogin] = useState(true);
+    const [error, setError] = useState('')
     const router = useRouter();
 
     async function submitHandler(e) {
@@ -33,6 +34,9 @@ function AuthForm(props) {
         console.log('data', data)
 
         // return data;
+        if(data.message !== null) {
+            setError(data.message)
+        }
         if(response.ok){
             router.replace('/signin')
         }
@@ -46,6 +50,7 @@ function AuthForm(props) {
         </div>
         <section className="ml-auto mr-auto w-4/5 mb-8 md:w-1/3">
         <form onSubmit={submitHandler} className="flex flex-col md:w-4/5 h-2/3 mt-18 ">
+            {error? <div className="bg-red-400 text-red-900 border border-red-900 text-center p-4 mb-4">{error}</div> : null}
             <div>
                 <label htmlFor='email' className="text-sm font-normal">Email</label>
                 <input type='email' id='email' required ref={emailInputRef} className="block h-10 w-full mb-2  rounded border-black border-2"/>
