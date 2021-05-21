@@ -91,15 +91,12 @@ function SigninForm(props) {
 };
 
 export async function getServerSideProps(context) {
-    // console.log('context', context);
     const providers = await getProviders();
-    // console.log('providers', providers)
     return {
         props:{
             providers
         }
     }
-
 }
 
 

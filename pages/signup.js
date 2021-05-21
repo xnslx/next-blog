@@ -33,7 +33,6 @@ function AuthForm(props) {
           }
         console.log('data', data)
 
-        // return data;
         if(data.message !== null) {
             setError(data.message)
         }
